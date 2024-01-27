@@ -25,11 +25,12 @@ public class  SubscriptionService {
     public Integer buySubscription(SubscriptionEntryDto subscriptionEntryDto){
 
         //Save The subscription Object into the Db and return the total Amount that user has to pay
-        Subscription newSubscription  = new Subscription();
+        /*Subscription newSubscription  = new Subscription();
         newSubscription.setSubscriptionType(subscriptionEntryDto.getSubscriptionType());
         newSubscription.setNoOfScreensSubscribed(subscriptionEntryDto.getNoOfScreensRequired());
         newSubscription.setStartSubscriptionDate(new Date());
         SubscriptionType givenType  = subscriptionEntryDto.getSubscriptionType();
+
         if("BASIC".equals(givenType)){
             newSubscription.setTotalAmountPaid(500+200*subscriptionEntryDto.getNoOfScreensRequired());
         }
@@ -48,6 +49,10 @@ public class  SubscriptionService {
         newSubscription = subscriptionRepository.save(newSubscription);
 
         return newSubscription.getTotalAmountPaid();
+
+         */
+
+        return 1;
     }
 
     public Integer upgradeSubscription(Integer userId)throws Exception{
