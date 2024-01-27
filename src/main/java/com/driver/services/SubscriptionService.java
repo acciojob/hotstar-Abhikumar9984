@@ -28,6 +28,7 @@ public class  SubscriptionService {
         Subscription newSubscription  = new Subscription();
         newSubscription.setSubscriptionType(subscriptionEntryDto.getSubscriptionType());
         newSubscription.setNoOfScreensSubscribed(subscriptionEntryDto.getNoOfScreensRequired());
+        newSubscription.setStartSubscriptionDate(new Date());
         SubscriptionType givenType  = subscriptionEntryDto.getSubscriptionType();
         if("BASIC".equals(givenType)){
             newSubscription.setTotalAmountPaid(500+200*subscriptionEntryDto.getNoOfScreensRequired());
