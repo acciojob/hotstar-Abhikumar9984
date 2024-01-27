@@ -70,6 +70,7 @@ public class  SubscriptionService {
             payAmount  = newAmount-oldAmount;
 
             subscription.setSubscriptionType(SubscriptionType.PRO);
+            subscription.setTotalAmountPaid(newAmount);
             user.setSubscription(subscription);
 
             userRepository.save(user);
@@ -80,6 +81,7 @@ public class  SubscriptionService {
             payAmount  = newAmount-oldAmount;
 
             subscription.setSubscriptionType(SubscriptionType.ELITE);
+            subscription.setTotalAmountPaid(newAmount);
             user.setSubscription(subscription);
 
             userRepository.save(user);
