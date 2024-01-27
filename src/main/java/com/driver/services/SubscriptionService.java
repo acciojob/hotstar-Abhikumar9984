@@ -43,12 +43,13 @@ public class  SubscriptionService {
 
         Date newDate  = new Date();
         Subscription newSubscription  = new Subscription(subscriptionEntryDto.getSubscriptionType() , subscriptionEntryDto.getNoOfScreensRequired() , newDate , amountPaid);
-
         User user  = userRepository.findById(subscriptionEntryDto.getUserId()).get();
-        user.setSubscription(newSubscription);
-        userRepository.save(user);
-
         newSubscription.setUser(user);
+        user.setSubscription(newSubscription);
+
+
+
+        userRepository.save(user);
         newSubscription = subscriptionRepository.save(newSubscription);
 
         return newSubscription.getTotalAmountPaid();
