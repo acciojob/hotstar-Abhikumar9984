@@ -41,7 +41,8 @@ public class  SubscriptionService {
             amountPaid = 1000+350*n;
         }
 
-        Subscription newSubscription  = new Subscription(subscriptionEntryDto.getSubscriptionType() , subscriptionEntryDto.getNoOfScreensRequired() , new Date() , amountPaid);
+        Date newDate  = new Date();
+        Subscription newSubscription  = new Subscription(subscriptionEntryDto.getSubscriptionType() , subscriptionEntryDto.getNoOfScreensRequired() , newDate , amountPaid);
 
         User user  = userRepository.findById(subscriptionEntryDto.getUserId()).get();
         user.setSubscription(newSubscription);
