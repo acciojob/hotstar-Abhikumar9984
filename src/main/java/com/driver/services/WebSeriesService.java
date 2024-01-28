@@ -26,28 +26,25 @@ public class WebSeriesService {
         //Incase the seriesName is already present in the Db throw Exception("Series is already present")
         //use function written in Repository Layer for the same
         //Dont forget to save the production and webseries Repo
-        List<WebSeries> webSeriesList  = webSeriesRepository.findAll();
 
-        Optional<WebSeries> webSeries1  = Optional.ofNullable(webSeriesRepository.findBySeriesName(webSeriesEntryDto.getSeriesName()));
-        if(webSeries1.isPresent())
-        {
+        WebSeries webSeries1  = webSeriesRepository.findBySeriesName(webSeriesEntryDto.getSeriesName());
+
+        if(webSeries1 != null){
             throw new Exception("Series is already present");
         }
 
         WebSeries webSeries = new WebSeries(webSeriesEntryDto.getSeriesName(), webSeriesEntryDto.getAgeLimit() , webSeriesEntryDto.getRating() , webSeriesEntryDto.getSubscriptionType());
 
         ProductionHouse productionHouse  = productionHouseRepository.findById(webSeriesEntryDto.getProductionHouseId()).get();
-        List<WebSeries> productionWebSeries   = productionHouse.getWebSeriesList();
-        int count  =  productionWebSeries.size();
-        double sum  = productionHouse.getRatings()*count;
-        sum += webSeries.getRating();
-        double newRating  = sum/(count+1);
-        productionHouse.setRatings(newRating);
-        productionWebSeries.add(webSeries);
-        productionHouseRepository.save(productionHouse);
-
         webSeries.setProductionHouse(productionHouse);
         webSeries  = webSeriesRepository.save(webSeries);
+        productionHouse.setRatings(webSeriesEntryDto.getRating());
+
+
+        productionHouse.getWebSeriesList().add(webSeries);
+        productionHouseRepository.save(productionHouse);
+
+
 
         return webSeries.getId();
     }
