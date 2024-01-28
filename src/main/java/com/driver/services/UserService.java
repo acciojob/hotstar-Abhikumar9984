@@ -46,18 +46,18 @@ public class UserService {
             SubscriptionType subscriptionType  = w.getSubscriptionType();
 
             if("ELITE".equals(userSubscriptionType)) {
-                if(age>=ageLimit)
+                if(age<=ageLimit)
                     count++;
             }
             else if("PRO".equals(userSubscriptionType)) {
                 if ("PRO".equals(subscriptionType) || "BASIC".equals(subscriptionType)) {
-                    if (age >= ageLimit)
+                    if (age <= ageLimit)
                         count++;
                  }
               }
             else{
                 if("BASIC".equals(subscriptionType)){
-                    if(age>=ageLimit)
+                    if(age<=ageLimit)
                         count++;
                 }
             }
