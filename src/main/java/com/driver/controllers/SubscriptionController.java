@@ -28,7 +28,7 @@ public class SubscriptionController {
 
 
     @PutMapping("/upgradeSubscription/{userId}")
-    public Integer upgradeSubscription(@PathVariable("userId")Integer userId) throws Exception{
+    public Integer upgradeSubscription(@PathVariable("userId")Integer userId){
 
         //In this function you need to upgrade the subscription to  its next level
         //ie if You are A BASIC subscriber update to PRO and if You are a PRO upgrade to ELITE.
@@ -37,7 +37,7 @@ public class SubscriptionController {
         try{
             return subscriptionService.upgradeSubscription(userId);
         }catch (Exception e){
-            throw new Exception(e.getMessage());
+            return -1;
         }
     }
 

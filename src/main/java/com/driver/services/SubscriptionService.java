@@ -111,7 +111,6 @@ public class  SubscriptionService {
             totalRevenue += s.getTotalAmountPaid();
         }
 
-
         return totalRevenue;
     }
 
