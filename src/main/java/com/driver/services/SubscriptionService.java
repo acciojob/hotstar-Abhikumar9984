@@ -45,10 +45,14 @@ public class  SubscriptionService {
         Subscription newSubscription  = new Subscription();
         newSubscription.setSubscriptionType(givenType);
         newSubscription.setTotalAmountPaid(amountPaid);
+        newSubscription.setStartSubscriptionDate(newDate);
         newSubscription.setNoOfScreensSubscribed(subscriptionEntryDto.getNoOfScreensRequired());
         newSubscription.setUser(user);
 
         user.setSubscription(newSubscription);
+
+        subscriptionRepository.save(newSubscription);
+
 
         return amountPaid;
     }
