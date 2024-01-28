@@ -74,7 +74,8 @@ public class  SubscriptionService {
         if("ELITE".equals(subscriptionType)){
             throw new Exception("Already the best Subscription");
         }
-        else if("BASIC".equals(subscriptionType)){
+
+        if("BASIC".equals(subscriptionType)){
 
             newAmount = 800+250*subscription.getNoOfScreensSubscribed();
             payAmount  = newAmount-oldAmount;
