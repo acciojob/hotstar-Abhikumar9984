@@ -77,7 +77,7 @@ public class  SubscriptionService {
 
         if("BASIC".equals(subscriptionType)){
 
-            newAmount = 800+250*subscription.getNoOfScreensSubscribed();
+            newAmount = 1000+350*subscription.getNoOfScreensSubscribed();
             payAmount  = newAmount-oldAmount;
 
             subscription.setSubscriptionType(SubscriptionType.PRO);
@@ -88,7 +88,7 @@ public class  SubscriptionService {
             subscriptionRepository.save(subscription);
         }
         else{
-            newAmount = 1000+350*subscription.getNoOfScreensSubscribed();
+            newAmount = 800+250*subscription.getNoOfScreensSubscribed();
             payAmount  = newAmount-oldAmount;
 
             subscription.setSubscriptionType(SubscriptionType.ELITE);
