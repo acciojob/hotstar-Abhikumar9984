@@ -35,13 +35,15 @@ public class  SubscriptionService {
             amountPaid = 500+200*n;
         }
         else if("PRO".equals(givenType)){
-            amountPaid = 800+250*n;
-        }
-        else{
             amountPaid = 1000+350*n;
         }
+        else{
+            amountPaid = 800+250*n;
+        }
+
         User user  = userRepository.findById(subscriptionEntryDto.getUserId()).get();
         Date newDate  = new Date();
+
         Subscription newSubscription  = new Subscription();
         newSubscription.setSubscriptionType(givenType);
         newSubscription.setTotalAmountPaid(amountPaid);
