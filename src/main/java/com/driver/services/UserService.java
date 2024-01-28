@@ -56,7 +56,7 @@ public class UserService {
                  }
               }
             else{
-                if("BASIC".equals(userSubscriptionType)){
+                if("BASIC".equals(subscriptionType)){
                     if(age>=ageLimit)
                         count++;
                 }
